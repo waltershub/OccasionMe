@@ -66,6 +66,18 @@ export const postNewUserBegin = user => dispatch => {
     });
 };
 
+export const updateUser = user => dispatch => {
+  db
+    .child('users/' + user.id)
+    .update(user)
+    .then(() => {
+      dispatch(getUserInfoCompleted(user));
+    })
+    .catch(error => {
+      console.log('ERROR posting updating user', error);
+    });
+};
+
 export const getUserInfoCompleted = userInfo => {
   return {
     type: SET_USER,

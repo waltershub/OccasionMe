@@ -11,7 +11,7 @@ import asyncAwait from 'redux-async-await';
 import rootReducer from './redux/reducers/rootReducer';
 import db from './db';
 import SideMenu from 'react-native-side-menu';
-
+import DrawerMenu from './screens/drawer_menu';
 const initialState = {};
 //export const store = createStore(initialState);
 
@@ -27,11 +27,6 @@ export default class App extends React.Component {
   };
 
   render() {
-    const menu = (
-      <View>
-        <Text>menu</Text>
-      </View>
-    );
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
         <AppLoading
@@ -43,13 +38,13 @@ export default class App extends React.Component {
     } else {
       return (
         <Provider store={store}>
-          <SideMenu menu={menu}>
+          <DrawerMenu>
             <View style={styles.container}>
               {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
               {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
               <RootNavigation />
             </View>
-          </SideMenu>
+          </DrawerMenu>
         </Provider>
       );
     }

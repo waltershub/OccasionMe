@@ -58,7 +58,7 @@ class SplashScreen extends React.Component {
     let token = await Notifications.getExpoPushTokenAsync();
     console.log(token);
 
-    this.props.user.token = token;
+    this.props.user.token ? this.props.user.token.push(token) : (this.props.user.token = [token]);
     console.log('token', this.props.user);
     this.props.updateUser(this.props.user);
   }

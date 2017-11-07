@@ -5,12 +5,12 @@ import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Expo, { Permissions, Notifications } from 'expo';
 import firebase from 'firebase';
-import * as Actions from '../../redux/actions';
-import Container from '../../components/Container';
-import Button from '../../components/Button';
-import config from '../../config/config';
-import AppStyles from '../../styles/AppStyles.js';
-import LoginStyles from '../../styles/LoginStyles.js';
+import * as Actions from '../redux/actions';
+import Container from '../components/Container';
+import Button from '../components/Button';
+import config from '../config/config';
+import AppStyles from '../styles/AppStyles.js';
+import LoginStyles from '../styles/LoginStyles.js';
 import SideMenu from 'react-native-side-menu';
 
 const mapStateToProps = (state, ownProps) => {
@@ -32,9 +32,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 class DrawerMenu extends React.Component {
-  reder() {
+  render() {
     const menu = (
-      <View>
+      <View style={{ flexDirection: 'row', height: 100, padding: 20 }}>
         <Text>{this.props.user.displayName}</Text>
       </View>
     );
